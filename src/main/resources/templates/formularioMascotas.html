@@ -10,27 +10,31 @@
     <div class="contenedor__formulario">
         <h1 th:text="${mascota.getId() == null} ? 'Registro Nueva' : 'Editar Mascota'">Mascota</h1>
 
-        <form action="/guardarmascota" method="post" th:object="${mascota}" class="formulario">
+        <form action="/guardarmascota" method="post" th:object="${mascota}" class="formulario" novalidate>
             <input type="hidden" th:field="*{Id}">            
 
             <div class="contenedor__input">
                 <label for="nombre">Nombre:</label>
                 <input type="text" th:field="*{Nombre}" id="nombre">
+                <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" style="color: red;"></p>
             </div>
 
             <div class="contenedor__input">
                 <label for="especie">Especie:</label>
                 <input type="text" th:field="*{Especie}" id="especie">
+                <p th:if="${#fields.hasErrors('especie')}" th:errors="*{especie}" style="color: red;"></p>                
             </div>
 
             <div class="contenedor__input">
                 <label for="raza">Raza:</label>
                 <input type="text" th:field="*{Raza}" id="raza">
+                <p th:if="${#fields.hasErrors('raza')}" th:errors="*{raza}" style="color: red;"></p>
             </div>
 
             <div class="contenedor__input">
                 <label for="edad">Edad:</label>
-                <input type="number" th:field="*{Edad}" id="edad" min="1" max="100">
+                <input type="number" th:field="*{Edad}" id="edad" min="1" max="100" value="1">
+                <p th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}" style="color: red;"></p>                
             </div>
 
             <button type="submit" class="btn--guardar">Guardar</button>

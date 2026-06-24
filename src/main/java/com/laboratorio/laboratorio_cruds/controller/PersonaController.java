@@ -3,8 +3,13 @@ package com.laboratorio.laboratorio_cruds.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+
 import com.laboratorio.laboratorio_cruds.model.Persona;
 import com.laboratorio.laboratorio_cruds.service.PersonaService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +34,12 @@ public class PersonaController {
     }
     
     @PostMapping("/guardarpersona")
-    public String guardarPersona(@ModelAttribute Persona persona) {
+    public String guardarPersona(@Valid @ModelAttribute Persona persona, BindingResult bindingResult) {
+
+        if(bindingResult.hasErrors()) {
+            return "formularioPersonas";
+        }
+
         personaService.crear(persona);
         return "redirect:/mostrarPersonas";
     }

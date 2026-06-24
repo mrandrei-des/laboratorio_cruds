@@ -4,16 +4,24 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Persona {
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id;
+    @NotBlank(message = "El nombre de la persona no puede estar en blanco.")
     private String nombre;
+    @NotBlank(message = "El apellido de la persona no puede estar en blanco.")
     private String apellido;
+    @NotBlank(message = "El email de la persona no puede estar en blanco.")
+    @Email(message = "Debe ingresar una dirección de correo válida.")
     private String email;
+    @NotBlank(message = "El teléfono de la persona no puede estar en blanco.")
     private String telefono;
+    @NotBlank(message = "La fecha de nacimiento de la persona no puede estar en blanco.")
     private String fechaNacimiento;
 
     public Persona(Long id, String nombre, String apellido, String email, String telefono, String fechaNacimiento) {

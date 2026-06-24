@@ -10,32 +10,37 @@
     <div class="contenedor__formulario">
         <h1 th:text="${persona.getId() == null} ? 'Persona Nueva' : 'Editar Persona'">Persona</h1>
 
-        <form action="/guardarpersona" method="post" th:object="${persona}" class="formulario">
+        <form action="/guardarpersona" method="post" th:object="${persona}" class="formulario" novalidate>
             <input type="hidden" th:field="*{Id}">            
 
             <div class="contenedor__input">
                 <label for="nombre">Nombre:</label>
                 <input type="text" th:field="*{Nombre}" id="nombre">
+                <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" style="color: red;"></p>                
             </div>
 
             <div class="contenedor__input">
                 <label for="apellido">Apellido:</label>
                 <input type="text" th:field="*{Apellido}" id="apellido">
+                <p th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" style="color: red;"></p>                   
             </div>
 
             <div class="contenedor__input">
                 <label for="email">Email:</label>
                 <input type="email" th:field="*{Email}" id="email">
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red;"></p>                   
             </div>
 
             <div class="contenedor__input">
                 <label for="telefono">Teléfono:</label>
                 <input type="tel" th:field="*{Telefono}" id="telefono">
+                <p th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}" style="color: red;"></p>                   
             </div>
 
             <div class="contenedor__input">
                 <label for="fechaNaci">Fecha Nacimiento:</label>
                 <input type="date" th:field="*{FechaNacimiento}" id="fechaNaci">
+                <p th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}" style="color: red;"></p>                   
             </div>
 
             <button type="submit" class="btn--guardar">Guardar</button>

@@ -74,6 +74,10 @@ h1 {
     transition: box-shadow .25s ease-in-out, border-bottom-color .25s ease-in-out;
 }
 
+.contenedor__input input.error__input {
+    border-bottom-color: #f00;
+}
+
 .contenedor__input input:focus {
     border-bottom-color: #48e;
 }
@@ -102,6 +106,9 @@ h1 {
 
 .contenedor__enlaces {
     padding: 4px 8px;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
 }
 
 .enlace--menu {

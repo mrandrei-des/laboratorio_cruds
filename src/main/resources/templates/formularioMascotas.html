@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${mascota.getId() == null} ? 'Registro de Mascotas' : 'Modificación de Mascotas'"></title>
+    <link rel="stylesheet" th:href="@{/css/styles_formulario.css}">
+</head>
+<body>
+    <div class="contenedor__formulario">
+        <h1 th:text="${mascota.getId() == null} ? 'Registro Nueva' : 'Editar Mascota'">Mascota</h1>
+
+        <form action="/guardarmascota" method="post" th:object="${mascota}" class="formulario">
+            <input type="hidden" th:field="*{Id}">            
+
+            <div class="contenedor__input">
+                <label for="nombre">Nombre:</label>
+                <input type="text" th:field="*{Nombre}" id="nombre">
+            </div>
+
+            <div class="contenedor__input">
+                <label for="especie">Especie:</label>
+                <input type="text" th:field="*{Especie}" id="especie">
+            </div>
+
+            <div class="contenedor__input">
+                <label for="raza">Raza:</label>
+                <input type="text" th:field="*{Raza}" id="raza">
+            </div>
+
+            <div class="contenedor__input">
+                <label for="edad">Edad:</label>
+                <input type="number" th:field="*{Edad}" id="edad" min="1" max="100">
+            </div>
+
+            <button type="submit" class="btn--guardar">Guardar</button>
+        </form>
+
+        <div class="contenedor__enlaces">
+            <a href="/" class="enlace enlace--menu">Volver Menú Principal</a>
+            <a href="/mostrarMascotas" class="enlace enlace--menu">Ir Listado Mascotas</a>
+        </div>
+    </div>    
+</body>
+</html>

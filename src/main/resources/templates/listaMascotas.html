@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Mascotas</title>
+    <link rel="stylesheet" th:href="@{/css/styles_listado.css}">
+</head>
+<body>
+    <div class="contenedor__lista">
+        <h1>Lista de Mascotas</h1>
+        <div class="contenedor__enlaces">
+            <a href="/nuevamascota" class="enlace--menu"> + Agregar Mascota</a>
+            <a href="/" class="enlace--menu">Volver Menú Principal</a>
+        </div>
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Especie</th>
+                    <th>Raza</th>
+                    <th>Edad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="mascota : ${mascotas}">
+                    <td th:text="${mascota.getId()}"></td>
+                    <td th:text="${mascota.getNombre()}"></td>
+                    <td th:text="${mascota.getEspecie()}"></td>
+                    <td th:text="${mascota.getRaza()}"></td>
+                    <td th:text="${mascota.getEdad()}"></td>
+                    <td>
+                        <a th:href="@{/editarMascota/{id}(id=${mascota.getId()})}">Editar</a>
+                        <a th:href="@{/eliminarMascota/{id}(id=${mascota.getId()})}">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>        
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${persona.getId() == null} ? 'Registro de Personas' : 'Modificación de Persona'"></title>
+    <link rel="stylesheet" th:href="@{/css/styles_formulario.css}">
+</head>
+<body>
+    <div class="contenedor__formulario">
+        <h1 th:text="${persona.getId() == null} ? 'Persona Nueva' : 'Editar Persona'">Persona</h1>
+
+        <form action="/guardarpersona" method="post" th:object="${persona}" class="formulario">
+            <input type="hidden" th:field="*{Id}">            
+
+            <div class="contenedor__input">
+                <label for="nombre">Nombre:</label>
+                <input type="text" th:field="*{Nombre}" id="nombre">
+            </div>
+
+            <div class="contenedor__input">
+                <label for="apellido">Apellido:</label>
+                <input type="text" th:field="*{Apellido}" id="apellido">
+            </div>
+
+            <div class="contenedor__input">
+                <label for="email">Email:</label>
+                <input type="email" th:field="*{Email}" id="email">
+            </div>
+
+            <div class="contenedor__input">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" th:field="*{Telefono}" id="telefono">
+            </div>
+
+            <div class="contenedor__input">
+                <label for="fechaNaci">Fecha Nacimiento:</label>
+                <input type="date" th:field="*{FechaNacimiento}" id="fechaNaci">
+            </div>
+
+            <button type="submit" class="btn--guardar">Guardar</button>
+        </form>
+
+        <div class="contenedor__enlaces">
+            <a href="/" class="enlace enlace--menu">Volver Menú Principal</a>
+            <a href="/mostrarPersonas" class="enlace enlace--menu">Ir Listado Personas</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Personas</title>
+    <link rel="stylesheet" th:href="@{/css/styles_listado.css}">
+</head>
+<body>
+    <div class="contenedor__lista">
+        <h1>Lista de Personas</h1>
+        <div class="contenedor__enlaces">
+            <a href="/nuevapersona" class="enlace--menu"> + Agregar Persona</a>
+            <a href="/nuevapersona" class="enlace--menu">Volver Menú Principal</a>
+        </div>
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="persona : ${personas}">
+                    <td th:text="${persona.getId()}"></td>
+                    <td th:text="${persona.getNombre()}"></td>
+                    <td th:text="${persona.getApellido()}"></td>
+                    <td th:text="${persona.getEmail()}"></td>
+                    <td th:text="${persona.getTelefono()}"></td>
+                    <td th:text="${persona.getFechaNacimiento()}"></td>
+                    <td>
+                        <a th:href="@{/editar/{id}(id=${persona.getId()})}">Editar</a>
+                        <a th:href="@{/eliminar/{id}(id=${persona.getId()})}">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>        
+    </div>
+</body>
+</html>

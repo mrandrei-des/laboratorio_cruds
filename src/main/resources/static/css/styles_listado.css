@@ -1,0 +1,89 @@
+*, *::after, *::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6  {
+    text-wrap: balance;
+}
+
+body {
+    height: 100dvh;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor__lista {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 12px;
+    background-color: #fff;
+    padding: 24px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px 0 #0003;
+}
+
+.contenedor__enlaces {
+    padding: 4px 8px;
+}
+
+.enlace--menu {
+    text-decoration: underline;
+    color: #48e;
+}
+
+.tabla {
+    border-radius: 8px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.tabla thead tr {
+    background-color: #48e;
+}
+
+.tabla thead th {
+    padding: 8px 12px;
+}
+
+.tabla tbody tr:hover {
+    background-color: #0002;
+}
+
+.tabla tbody td {
+    padding: 6px 12px;
+}
+
+.tabla tbody td a {
+    display: inline-block;
+    padding: 4px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.tabla tbody td a:first-child {
+    background-color: #ffe600;
+    color: #000;
+}
+
+.tabla tbody td a:nth-child(2) {
+    background-color: #d34a14;
+    color: #fff;
+}
